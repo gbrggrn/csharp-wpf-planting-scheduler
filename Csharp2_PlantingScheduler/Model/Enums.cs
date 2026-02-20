@@ -13,7 +13,7 @@ namespace Csharp2_PlantingScheduler.Model
     {
         public enum PlantCategory
         {
-            Flower,
+            //Flower,
             Vegetable
         }
 

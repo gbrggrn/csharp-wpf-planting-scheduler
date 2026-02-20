@@ -120,7 +120,7 @@ namespace Csharp2_PlantingScheduler
             indoorWeeksComboBox.SelectedIndex = 0;
             weeksToHarvestComboBox.SelectedIndex = 0;
             coldStartComboBox.SelectedIndex = 0;
-            categoryComboBox.SelectedIndex = 1;
+            categoryComboBox.SelectedIndex = 0;
             sowTypeComboBox.SelectedIndex = 0;
             typeComboBox.SelectedIndex = 0;
         }
@@ -136,10 +136,10 @@ namespace Csharp2_PlantingScheduler
             {
                 typeComboBox.ItemsSource = Enum.GetNames(typeof(Enums.VegetableType));
             }
-            else
+            /*else
             {
                 typeComboBox.ItemsSource = Enum.GetNames(typeof(Enums.FlowerType));
-            }
+            }*/
 
             typeComboBox.SelectedIndex = 0;
         }
