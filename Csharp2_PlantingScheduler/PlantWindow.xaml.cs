@@ -168,38 +168,35 @@ namespace Csharp2_PlantingScheduler
 
             if (!string.IsNullOrEmpty(name) && name.Length <= nameMaxChar)
             {
-                if (categoryComboBox.SelectedIndex == 1)
+                Vegetable vegetable = new()
                 {
-                    Vegetable vegetable = new()
-                    {
-                        SpeciesName = name,
-                        Category = (Enums.PlantCategory)Enum.Parse(typeof(Enums.PlantCategory), categoryComboBox.SelectedItem.ToString()!),
-                        SowType = (Enums.SowType)Enum.Parse(typeof(Enums.SowType), sowTypeComboBox.SelectedItem.ToString()!),
-                        Type = (Enums.VegetableType)Enum.Parse(typeof(Enums.VegetableType), typeComboBox.SelectedItem.ToString()!),
-                        WeeksToHarvest = (int)weeksToHarvestComboBox.SelectedItem
-                    };
+                    SpeciesName = name,
+                    Category = (Enums.PlantCategory)Enum.Parse(typeof(Enums.PlantCategory), categoryComboBox.SelectedItem.ToString()!),
+                    SowType = (Enums.SowType)Enum.Parse(typeof(Enums.SowType), sowTypeComboBox.SelectedItem.ToString()!),
+                    Type = (Enums.VegetableType)Enum.Parse(typeof(Enums.VegetableType), typeComboBox.SelectedItem.ToString()!),
+                    WeeksToHarvest = (int)weeksToHarvestComboBox.SelectedItem
+                };
 
-                    if (vegetable.SowType == Enums.SowType.Indoorstart)
-                    {
-                        vegetable.IndoorWeeks = (int)indoorWeeksComboBox.SelectedItem;
-                    }
-                    else if (vegetable.SowType == Enums.SowType.Coldstart)
-                    {
-                        vegetable.ColdStartWeeks = (int)coldStartComboBox.SelectedItem;
-                    }
-
-                    if (editingFlag)
-                    {
-                        plantManager.ChangeAt(vegetable, editingIndex);
-                    }
-                    else
-                    {
-                        plantManager.Add(vegetable);
-                    }
-
-                    MessageBoxes.DisplayInfoBox($"The {vegetable.Type.ToString()} {vegetable.SpeciesName} added!", "Success!");
-                    this.Close();
+                if (vegetable.SowType == Enums.SowType.Indoorstart)
+                {
+                    vegetable.IndoorWeeks = (int)indoorWeeksComboBox.SelectedItem;
                 }
+                else if (vegetable.SowType == Enums.SowType.Coldstart)
+                {
+                    vegetable.ColdStartWeeks = (int)coldStartComboBox.SelectedItem;
+                }
+
+                if (editingFlag)
+                {
+                    plantManager.ChangeAt(vegetable, editingIndex);
+                }
+                else
+                {
+                    plantManager.Add(vegetable);
+                }
+
+                MessageBoxes.DisplayInfoBox($"The {vegetable.Type.ToString()} {vegetable.SpeciesName} added!", "Success!");
+                this.Close();
             }
             else
             {
